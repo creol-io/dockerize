@@ -65,6 +65,14 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 ```
+## Multi-arch Building
+
+To be able to build dockerize for multiple architectures, ensure you have the docker ```experimental``` features enabled.
+
+Run the following to build for multiple arch types
+```bash
+docker buildx build --platform linux/amd64,linux/386,linux/arm/v7,linux/arm/v6 --tag DOCKERUSERNAME/dockerize --push .
+```
 
 ## Usage
 
